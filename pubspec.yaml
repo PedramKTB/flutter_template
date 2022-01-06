@@ -1,0 +1,40 @@
+name: flutter_template
+description: flutter_template
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.15.1 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  provider: ^6.0.2
+  http: ^0.13.4
+  shared_preferences: ^2.0.11
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^1.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+
+  # fonts:
+    # - family: flutter_template
+    #   fonts:
+    #     - asset: assets/fonts/flutter_template-Light.ttf
+    #       weight: 300
+    #     - asset: assets/fonts/flutter_template-Regular.ttf
+    #       weight: 400
+    #     - asset: assets/fonts/flutter_template-SemiBold.ttf
+    #       weight: 600
+    #     - asset: assets/fonts/flutter_template-Bold.ttf
+    #       weight: 700
