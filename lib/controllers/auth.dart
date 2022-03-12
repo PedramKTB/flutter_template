@@ -1,10 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:flutter/material.dart';
 import 'package:flutter_template/app_preferences/user_preferences.dart';
 import 'package:flutter_template/models/user.dart';
-import 'package:flutter_template/provider/res_provider.dart';
-import 'package:http/http.dart';
+import 'package:flutter_template/res.dart';
+import 'package:get/get.dart';
 
 enum AuthStatus {
   loggedOut,
@@ -16,7 +15,8 @@ enum AuthStatus {
   registered,
 }
 
-class AuthProvider with ChangeNotifier {
+class Auth extends GetxController {
+  GetConnect gc = GetConnect();
   AuthStatus _authStatus = AuthStatus.loggedOut;
   AuthStatus get authStatus => _authStatus;
 
@@ -25,16 +25,16 @@ class AuthProvider with ChangeNotifier {
     required String password,
   }) async {
     _authStatus = AuthStatus.loggingIn;
-    notifyListeners();
+    update();
 
-    Response response = await post(
-      Uri.parse(ResProvider.urls.login),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: {
+    Response response = await gc.post(
+      Res.urls.login,
+      {
         'username': username,
         'password': password,
+      },
+      headers: {
+        'Content-Type': 'application/json',
       },
     );
 
@@ -46,7 +46,7 @@ class AuthProvider with ChangeNotifier {
           User user = User.fromJson((json.decode(response.body)));
           UserPreferences.saveUser(user);
           _authStatus = AuthStatus.loggedIn;
-          notifyListeners();
+          update();
           return {'status': 'ok', 'user': user};
         } catch (e) {
           return {'status': 'bad response'};
@@ -55,12 +55,12 @@ class AuthProvider with ChangeNotifier {
       case 401:
       case 403:
         _authStatus = AuthStatus.loginFail;
-        notifyListeners();
+        update();
         return {'status': 'unauthorized'};
       case 404:
       default:
         _authStatus = AuthStatus.loginFail;
-        notifyListeners();
+        update();
         return {'status': 'connection error'};
     }
   }
@@ -71,17 +71,17 @@ class AuthProvider with ChangeNotifier {
     required String password,
   }) async {
     _authStatus = AuthStatus.registering;
-    notifyListeners();
+    update();
 
-    Response response = await post(
-      Uri.parse(ResProvider.urls.register),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: {
+    Response response = await gc.post(
+      Res.urls.register,
+      {
         'email': email,
         'username': username,
         'password': password,
+      },
+      headers: {
+        'Content-Type': 'application/json',
       },
     );
 
@@ -93,7 +93,7 @@ class AuthProvider with ChangeNotifier {
           User user = User.fromJson((json.decode(response.body)));
           UserPreferences.saveUser(user);
           _authStatus = AuthStatus.registered;
-          notifyListeners();
+          update();
           return {'status': 'ok', 'user': user};
         } catch (e) {
           return {'status': 'bad response'};
@@ -102,12 +102,12 @@ class AuthProvider with ChangeNotifier {
       case 401:
       case 403:
         _authStatus = AuthStatus.registerFail;
-        notifyListeners();
+        update();
         return {'status': 'unauthorized'};
       case 404:
       default:
         _authStatus = AuthStatus.registerFail;
-        notifyListeners();
+        update();
         return {'status': 'connection error'};
     }
   }

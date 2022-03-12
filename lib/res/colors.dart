@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_template/provider/res_provider.dart';
+import 'package:flutter_template/res.dart';
 
-class AppColors {
+class ResColors {
+  final Color accent = const Color.fromRGBO(0xFF, 0x00, 0x00, 1);
+  final Color white = const Color.fromRGBO(0xFF, 0xFF, 0xFF, 1);
+  final Color black = const Color.fromRGBO(0x00, 0x00, 0x00, 1);
+  final Color red = const Color.fromRGBO(0xFF, 0x00, 0x00, 1);
+  final Color green = const Color.fromRGBO(0x00, 0xFF, 0x00, 1);
+  final Color blue = const Color.fromRGBO(0x00, 0x00, 0xFF, 1);
+  final Color yellow = const Color.fromRGBO(0xFF, 0xFF, 0x00, 1);
+  final Color cyan = const Color.fromRGBO(0x00, 0xFF, 0xFF, 1);
+  final Color purple = const Color.fromRGBO(0xFF, 0x00, 0xFF, 1);
+
   final int _variance = 0x10;
   static const Color _light = Color.fromRGBO(0xFF, 0xFF, 0xFF, 1);
   static const Color _dark = Color.fromRGBO(0x00, 0x00, 0x00, 1);
@@ -24,18 +34,8 @@ class AppColors {
   static const Color _onErrorLight = Color.fromRGBO(0xFF, 0x00, 0x00, 1);
   static const Color _onErrorDark = Color.fromRGBO(0xFF, 0x00, 0x00, 1);
 
-  final Color accent = const Color.fromRGBO(0xFF, 0x00, 0x00, 1);
-  final Color white = const Color.fromRGBO(0xFF, 0xFF, 0xFF, 1);
-  final Color black = const Color.fromRGBO(0x00, 0x00, 0x00, 1);
-  final Color red = const Color.fromRGBO(0xFF, 0x00, 0x00, 1);
-  final Color green = const Color.fromRGBO(0x00, 0xFF, 0x00, 1);
-  final Color blue = const Color.fromRGBO(0x00, 0x00, 0xFF, 1);
-  final Color yellow = const Color.fromRGBO(0xFF, 0xFF, 0x00, 1);
-  final Color cyan = const Color.fromRGBO(0x00, 0xFF, 0xFF, 1);
-  final Color purple = const Color.fromRGBO(0xFF, 0x00, 0xFF, 1);
-
   Brightness brightness({ThemeMode? themeMode}) => themeMode == null
-      ? ResProvider.themeMode == ThemeMode.dark
+      ? ThemeMode.system == ThemeMode.dark
           ? Brightness.dark
           : Brightness.light
       : themeMode == ThemeMode.dark
@@ -54,77 +54,77 @@ class AppColors {
         color.opacity,
       );
   Color text({ThemeMode? themeMode}) => themeMode == null
-      ? ResProvider.themeMode == ThemeMode.dark
+      ? ThemeMode.system == ThemeMode.dark
           ? _light
           : _dark
       : themeMode == ThemeMode.dark
           ? _light
           : _dark;
   Color back({ThemeMode? themeMode}) => themeMode == null
-      ? ResProvider.themeMode == ThemeMode.dark
+      ? ThemeMode.system == ThemeMode.dark
           ? _dark
           : _light
       : themeMode == ThemeMode.dark
           ? _dark
           : _light;
   Color onBack({ThemeMode? themeMode}) => themeMode == null
-      ? ResProvider.themeMode == ThemeMode.dark
+      ? ThemeMode.system == ThemeMode.dark
           ? _onDark
           : _onLight
       : themeMode == ThemeMode.dark
           ? _onDark
           : _onLight;
   Color primary({ThemeMode? themeMode}) => themeMode == null
-      ? ResProvider.themeMode == ThemeMode.dark
+      ? ThemeMode.system == ThemeMode.dark
           ? _primaryDark
           : _primaryLight
       : themeMode == ThemeMode.dark
           ? _primaryDark
           : _primaryLight;
   Color onPrimary({ThemeMode? themeMode}) => themeMode == null
-      ? ResProvider.themeMode == ThemeMode.dark
+      ? ThemeMode.system == ThemeMode.dark
           ? _onPrimaryDark
           : _onPrimaryLight
       : themeMode == ThemeMode.dark
           ? _onPrimaryDark
           : _onPrimaryLight;
   Color secondary({ThemeMode? themeMode}) => themeMode == null
-      ? ResProvider.themeMode == ThemeMode.dark
+      ? ThemeMode.system == ThemeMode.dark
           ? _secondaryDark
           : _secondaryLight
       : themeMode == ThemeMode.dark
           ? _secondaryDark
           : _secondaryLight;
   Color onSecondary({ThemeMode? themeMode}) => themeMode == null
-      ? ResProvider.themeMode == ThemeMode.dark
+      ? ThemeMode.system == ThemeMode.dark
           ? _onSecondaryDark
           : _onSecondaryLight
       : themeMode == ThemeMode.dark
           ? _onSecondaryDark
           : _onSecondaryLight;
   Color surface({ThemeMode? themeMode}) => themeMode == null
-      ? ResProvider.themeMode == ThemeMode.dark
+      ? ThemeMode.system == ThemeMode.dark
           ? _surfaceDark
           : _surfaceLight
       : themeMode == ThemeMode.dark
           ? _surfaceDark
           : _surfaceLight;
   Color onSurface({ThemeMode? themeMode}) => themeMode == null
-      ? ResProvider.themeMode == ThemeMode.dark
+      ? ThemeMode.system == ThemeMode.dark
           ? _onSurfaceDark
           : _onSurfaceLight
       : themeMode == ThemeMode.dark
           ? _onSurfaceDark
           : _onSurfaceLight;
   Color error({ThemeMode? themeMode}) => themeMode == null
-      ? ResProvider.themeMode == ThemeMode.dark
+      ? ThemeMode.system == ThemeMode.dark
           ? _errorDark
           : _errorLight
       : themeMode == ThemeMode.dark
           ? _errorDark
           : _errorLight;
   Color onError({ThemeMode? themeMode}) => themeMode == null
-      ? ResProvider.themeMode == ThemeMode.dark
+      ? ThemeMode.system == ThemeMode.dark
           ? _onErrorDark
           : _onErrorLight
       : themeMode == ThemeMode.dark

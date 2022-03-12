@@ -1,4 +1,4 @@
-class AppUrls {
+class ResUrls {
   static const String _baseUrl = "https://flutter_template";
   final String baseUrl = _baseUrl;
   final String login = _baseUrl + "/login/";
