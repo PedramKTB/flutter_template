@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_template/res.dart';
 
 class ResColors {
   final Color accent = const Color.fromRGBO(0xFF, 0x00, 0x00, 1);
